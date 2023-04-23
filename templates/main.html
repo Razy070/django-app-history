@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+
+
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url 'main' %}" class="nav-link px-2 text-white">Главное меню</a></li>
+          <li><a href="{% url 'contacts' %}" class="nav-link px-2 text-white">Контакты</a></li>
+          <li><a href="{% url 'home' %}" class="nav-link px-2 text-white">Истории Из Жизни</a></li>
+            <li><a href="{% url 'profile' %}" class="nav-link px-2 text-white">Аккаунт</a></li>
+        {% else %}
+        {% endif %}
+        </ul>
+
+        <div class="text-end">
+            {% if request.user.is_authenticated %}
+                        <div class="text-end">
+                {% if request.user.is_authenticated %}
+             <li class="nav-link px-2 text-white">Пользователь: {{ request.user.username }}</li>
+          {% else %}
+              <li class="nav-link px-2 text-white">Пользователь: аноним</li>
+          {% endif %}
+                <a href="{% url 'logout' %}" class="btn btn-outline-light me-2">Log out</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-light me-2">Register</a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="px-4 pt-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">Проект "django-app-history"</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">
+            Простой пример Django MVT(Model-View-Template) для развёртывания на ubuntu
+        </p>
+        <p class="lead mb-4">Особенности проекта:
+            <ul class=" custom-background-transparent-middle">
+                <h6 class="">Одно монолитное приложение</h6>
+                <h6 class="">Переменные лежат в коде</h6>
+                <h6 class="">База данных SQLite</h6>
+                <h6 class="">Обычная модель пользователя</h6>
+                <h6 class="">Обычная django-admin + примитивное отображение(регистрация) моделей</h6>
+                <h6 class="">MVT авторизация</h6>
+                <h6 class="">Вся маршрутизация стандартная</h6>
+                <h6 class="">Упрощённый формат создания моделей</h6>
+                <h6 class="">Все задачи синхронные</h6>
+                <h6 class="">Без тестов</h6>
+                <h6 class="">Только стандартные запросы</h6>
+                <h6 class="">Минимум типизации проекта</h6>
+                <h6 class="">Логирование в .txt файл</h6>
+                <h6 class="">и другое...</h6>
+            </ul>
+        </p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <a class="text-decoration-none lead btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'home' %}">
+            К постам!
+        </a>
+    </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>Profile</title>
+
+<div class="center">
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 card mb-4  mt-3 left  top">
+                <div class="card-body">
+
+                     <div class="bd-example">
+                    Avatar:<svg class="bd-placeholder-img rounded mx-auto d-block" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 200x200" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">200x200</text></svg>
+                    </div>
+
+                     <li>Никнейм: {{ request.user.username }}</li>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 card mb-4  mt-3 left  top">
+                <div class="card-body">
+                    <a class="btn btn btn-outline-danger" href="{% url 'main' %}" >Вернутся на главную...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
